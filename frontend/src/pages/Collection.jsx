@@ -5,7 +5,7 @@ import ProductItem from "../components/ProductItem";
 import { assets } from "../assets/assets";
 
 const Collection = () => {
-    const { products } = useContext(ShopContext);
+    const { products, search, showSearch } = useContext(ShopContext);
     const [showFilter, setShowFilter] = useState(false);
     const [filterProducts, setFilterProducts] = useState([]);
     const [category, setCategory] = useState([]);
@@ -34,6 +34,12 @@ const Collection = () => {
 
     const appyFilter = () => {
         let productsCopy = products.slice();
+
+        if (showSearch && search) {
+            productsCopy = productsCopy.filter((item) =>
+                item.name.toLowerCase().includes(search.toLowerCase())
+            );
+        }
 
         if (category.length > 0) {
             productsCopy = productsCopy.filter((item) =>
@@ -71,7 +77,7 @@ const Collection = () => {
 
     useEffect(() => {
         appyFilter();
-    }, [category, subCategory]);
+    }, [category, subCategory, search, showSearch]);
 
     useEffect(() => {
         sortProduct(sortType);
@@ -108,8 +114,9 @@ const Collection = () => {
                                 className="w-3"
                                 onChange={toggleCategory}
                                 value={"Men"}
+                                id="men"
                             />
-                            Men
+                            <label htmlFor="men">Men</label>
                         </p>
                         <p className="flex gap-2">
                             <input
@@ -117,8 +124,9 @@ const Collection = () => {
                                 className="w-3"
                                 onChange={toggleCategory}
                                 value={"Women"}
+                                id="women"
                             />
-                            Women
+                            <label htmlFor="women">Women</label>
                         </p>
                         <p className="flex gap-2">
                             <input
@@ -126,8 +134,9 @@ const Collection = () => {
                                 className="w-3"
                                 onChange={toggleCategory}
                                 value={"Kids"}
+                                id="kids"
                             />
-                            Kids
+                            <label htmlFor="kids">Kids</label>
                         </p>
                     </div>
                 </div>
@@ -145,8 +154,9 @@ const Collection = () => {
                                 className="w-3"
                                 onChange={toggleSubCategory}
                                 value={"Topwear"}
+                                id="Topwear"
                             />
-                            Topwear
+                            <label htmlFor="Topwear">Topwear</label>
                         </p>
                         <p className="flex gap-2">
                             <input
@@ -154,8 +164,9 @@ const Collection = () => {
                                 className="w-3"
                                 onChange={toggleSubCategory}
                                 value={"Bottomwear"}
+                                id="Bottomwear"
                             />
-                            Bottomwear
+                            <label htmlFor="Bottomwear">Bottomwear</label>
                         </p>
                         <p className="flex gap-2">
                             <input
@@ -163,8 +174,9 @@ const Collection = () => {
                                 className="w-3"
                                 onChange={toggleSubCategory}
                                 value={"Winterwear"}
+                                id="Winterwear"
                             />
-                            Winterwear
+                            <label htmlFor="Winterwear">Winterwear</label>
                         </p>
                     </div>
                 </div>
