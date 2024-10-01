@@ -23,7 +23,8 @@ const Product = () => {
 
     useEffect(() => {
         fetchProductData();
-    }, [productId, products]);
+        setSize("");
+    }, [productId]);
 
     return productData ? (
         <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100">
