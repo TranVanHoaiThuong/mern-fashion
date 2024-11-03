@@ -10,10 +10,10 @@ const ProductItem = ({ id, image, name, price, handleClick = false }) => {
             className="text-gray-700 cursor-pointer"
             onClick={handleClick}
         >
-            <div className="overflow-hidden">
+            <div className="overflow-hidden flex justify-center">
                 <img
                     src={image[0]}
-                    className="hover:scale-110 transition ease-in-out"
+                    className="hover:scale-110 transition ease-in-out max-h-[300px]"
                     alt=""
                 />
             </div>

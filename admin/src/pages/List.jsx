@@ -62,7 +62,7 @@ const List = () => {
                     >
                         <img className="w-12" src={item.image[0]} alt="" />
                         <p>{item.name}</p>
-                        <p>{item.dategory}</p>
+                        <p>{item.category}</p>
                         <p>
                             {currency} {item.price}
                         </p>
